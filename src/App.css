@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  margin-left: 20px;
 }
 
 .App-logo {
@@ -26,6 +27,16 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.ant-form-item-required{
+  width:100%;
+}
+.mbti-progress .ant-progress-bg{
+  border-radius: 0;
+}
+.mbti-progress.right{
+  direction: rtl;
 }
 
 @keyframes App-logo-spin {
