@@ -1,4 +1,4 @@
-import { Card, Col, Progress, Row, Typography } from 'antd';
+import { Card, Col, Progress, Row } from 'antd';
 import Title from 'antd/lib/typography/Title';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
@@ -51,7 +51,11 @@ function DetailedResult(props:any){
 }
 function Results(props: {quizStore: typeof QuizStore, routeTo:Function}) {
     if(!props.quizStore.result){
-        return (<div>Should answer all questions and submit</div>)
+        return (
+        <div>
+            Should answer all questions and submit
+            <button onClick={()=>{props.routeTo("quiz")}}>Back</button>
+        </div>)
     }
     return (
         <div>

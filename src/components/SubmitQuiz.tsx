@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Form, Input, Button} from 'antd';
 import { observer } from 'mobx-react-lite';
+import Title from 'antd/lib/typography/Title';
 
 function SubmitQuiz(props:any){
     const [form] = Form.useForm();
+    let [error,setError] = useState("")
     const onFinish = (e:any)=>{
         let email = form.getFieldValue("email")
         props.quizStore.submit(email)
         .then((res:any)=>{
-            props.routeTo("results")
+            if(res == "success"){
+                props.routeTo("results")
+            } else {
+                setError("You should complete all the questions.")
+            }
         })
         .catch((err:any)=>{
             console.log(err)
@@ -37,7 +43,7 @@ function SubmitQuiz(props:any){
             >
                 <Input />
             </Form.Item>
-
+            <Title level={5} type="danger">{error}</Title>
 
             <Form.Item >
                 <Button onClick={form.submit}>

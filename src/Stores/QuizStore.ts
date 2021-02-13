@@ -29,11 +29,11 @@ class QuizStore{
         return this.questions.filter(question=>question.answered).length + "/" + this.questionsCount
     }
     submit(email:string){
-        console.log("will submit")
         this.touch()
         let questions = this.questions.map(q=>({id:q.id,answer:q.answer}))
         let userEmail = email;
         let promise = new Promise((resolve,reject)=>{
+            //not in a separate file just for simplicity
             fetch('http://localhost:3000/submissions',{
                 method:"POST",
                 body:JSON.stringify({questions,userEmail}),
@@ -74,7 +74,6 @@ export class Question{
     meaning = "I"
     answer:Number = 0
     setAnswer(answer:Number){
-        console.log(answer)
         this.answer = answer
         this.answered = true
     }
